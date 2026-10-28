@@ -1,7 +1,15 @@
 # JVM: a `finally` takes the wrong branch after a non-local exit from an inline function of another module
 
 **Backend:** JVM (K2, JVM IR) · **Reproduced with:** 2.4.0, 2.4.10, 2.4.20, 2.4.21 (latest stable), 2.5.0-Beta2 (latest
-pre-release) · **Not affected:** the same code in one module; `-Xno-optimize` on the library
+pre-release), 2.5.20-dev-2503 (dev build with the KT-90245 fix) · **Not affected:** the same code in one module; `-Xno-optimize` on the library
+
+## Not a duplicate of KT-90245
+
+[KT-90245](https://youtrack.jetbrains.com/issue/KT-90245) (code after a nested inline call in an inline function's
+`finally` is skipped on non-local return) is in the same area, but it's a different bug: it needs a nested inline call
+in the `finally` and happens in one module; this one needs no nested call and happens only across modules. Kotlin
+**2.5.20-dev-2503**, which contains the KT-90245 fix (2.5.20-dev-1842), fixes KT-90245's sample
+(`foo;bar;barFinally;afterBar;`) but **still** prints `begin end` here.
 
 ## Summary
 
