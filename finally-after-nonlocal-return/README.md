@@ -1,5 +1,7 @@
 # JVM: a `finally` takes the wrong branch after a non-local exit from an inline function of another module
 
+**Filed as [KT-90854](https://youtrack.jetbrains.com/issue/KT-90854)** (YouTrack, project KT).
+
 **Backend:** JVM (K2, JVM IR) · **Reproduced with:** 2.4.0, 2.4.10, 2.4.20, 2.4.21 (latest stable), 2.5.0-Beta2 (latest
 pre-release), 2.5.20-dev-2503 (dev build with the KT-90245 fix) · **Not affected:** the same code in one module; `-Xno-optimize` on the library
 
